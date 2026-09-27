@@ -1,0 +1,199 @@
+# STRATIM GitLab CI/CD Pipeline
+# Version: 0.1.0-protocol
+# Date: 2026-09
+#
+# This pipeline validates the protocol structure and runs simulation
+# scripts when they become available. It does NOT run empirical analysis
+# (no data exists at this stage).
+
+stages:
+  - validate
+  - simulate
+  - archive
+
+variables:
+  STRATIM_VERSION: "0.1.0-protocol"
+  R_VERSION: "4.3"
+
+# Cache R packages and renv library across jobs
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .cache/R
+    - renv/library/
+    - renv/staging/
+
+# ------------------------------------------------------------------
+# VALIDATE STAGE
+# ------------------------------------------------------------------
+
+validate:structure:
+  stage: validate
+  script:
+    - echo "Validating STRATIM repository structure..."
+    - test -f README.md || (echo "MISSING README.md" && exit 1)
+    - test -f RESEARCH_PAPER/STRATIM_Research_Paper.md || (echo "MISSING RESEARCH_PAPER/STRATIM_Research_Paper.md" && exit 1)
+    - test -f VERSION || (echo "MISSING VERSION" && exit 1)
+    - test -f LICENSE || (echo "MISSING LICENSE" && exit 1)
+    - test -f CITATION.cff || (echo "MISSING CITATION.cff" && exit 1)
+    - test -f CHANGELOG.md || (echo "MISSING CHANGELOG.md" && exit 1)
+    - test -f AUTHORS.md || (echo "MISSING AUTHORS.md" && exit 1)
+    - test -f CONTRIBUTING.md || (echo "MISSING CONTRIBUTING.md" && exit 1)
+    - echo "Core files present."
+    - test -d PREREGISTRATION && echo "PREREGISTRATION/ present" || echo "PREREGISTRATION/ not yet created"
+    - test -d SIMULATION && echo "SIMULATION/ present" || echo "SIMULATION/ not yet created"
+    - test -d MODEL && echo "MODEL/ present" || echo "MODEL/ not yet created"
+    - test -d INSTRUMENTS && echo "INSTRUMENTS/ present" || echo "INSTRUMENTS/ not yet created"
+    - test -d ANALYSIS && echo "ANALYSIS/ present" || echo "ANALYSIS/ not yet created"
+    - test -d DATA && echo "DATA/ present" || echo "DATA/ not yet created"
+    - test -d DOCS && echo "DOCS/ present" || echo "DOCS/ not yet created"
+  only:
+    - main
+    - merge_requests
+
+validate:no-empirical-data:
+  stage: validate
+  script:
+    - echo "Checking that no raw participant data is committed..."
+    - |
+      if [ -d DATA/raw ] && find DATA/raw -type f -not -name '.gitkeep' | grep -q .; then
+        echo "ERROR: DATA/raw/ contains files. Participant data must never be committed.";
+        exit 1;
+      fi
+    - echo "No participant data committed."
+  only:
+    - main
+    - merge_requests
+
+validate:markdown:
+  stage: validate
+  image: node:20
+  script:
+    - npm install -g markdownlint-cli
+    - echo "Linting Markdown files (warnings only)..."
+    - markdownlint README.md --disable MD013 MD033 MD041 || true
+    - markdownlint RESEARCH_PAPER/STRATIM_Research_Paper.md --disable MD013 MD033 MD041 || true
+    - markdownlint CHANGELOG.md --disable MD013 MD033 MD041 || true
+    - markdownlint AUTHORS.md --disable MD013 MD033 MD041 || true
+  allow_failure: true
+  only:
+    - main
+    - merge_requests
+
+validate:python-syntax:
+  stage: validate
+  image: python:3.11
+  script:
+    - python -m pip install --upgrade pip
+    - pip install flake8
+    - echo "Checking Python syntax..."
+    - find . -name "*.py" -not -path "./.git/*" -not -path "./venv/*" | xargs -r flake8 --max-line-length=88 --extend-ignore=E203,W503 || true
+  allow_failure: true
+  only:
+    - main
+    - merge_requests
+
+# ------------------------------------------------------------------
+# SIMULATE STAGE
+# ------------------------------------------------------------------
+
+simulate:identifiability:
+  stage: simulate
+  image: rocker/r-ver:4.3
+  script:
+    - echo "Running H5 kernel identifiability check..."
+    - |
+      if [ -f SIMULATION/code/01_H5_identifiability.R ]; then
+        Rscript SIMULATION/code/01_H5_identifiability.R;
+      else
+        echo "SIMULATION/code/01_H5_identifiability.R not yet available. Skipping.";
+      fi
+  artifacts:
+    paths:
+      - SIMULATION/results/
+    expire_in: 30 days
+    when: on_success
+  allow_failure: true
+  only:
+    - main
+
+simulate:recovery:
+  stage: simulate
+  image: rocker/r-ver:4.3
+  script:
+    - echo "Running parameter recovery simulation..."
+    - |
+      if [ -f SIMULATION/code/02_parameter_recovery.R ]; then
+        Rscript SIMULATION/code/02_parameter_recovery.R;
+      else
+        echo "SIMULATION/code/02_parameter_recovery.R not yet available. Skipping.";
+      fi
+  artifacts:
+    paths:
+      - SIMULATION/results/
+    expire_in: 30 days
+    when: on_success
+  allow_failure: true
+  only:
+    - main
+
+simulate:power-surface:
+  stage: simulate
+  image: rocker/r-ver:4.3
+  script:
+    - echo "Running Monte Carlo power surface..."
+    - |
+      if [ -f SIMULATION/code/03_power_surface.R ]; then
+        Rscript SIMULATION/code/03_power_surface.R;
+      else
+        echo "SIMULATION/code/03_power_surface.R not yet available. Skipping.";
+      fi
+  artifacts:
+    paths:
+      - SIMULATION/results/
+    expire_in: 30 days
+    when: on_success
+  allow_failure: true
+  only:
+    - main
+
+# ------------------------------------------------------------------
+# ARCHIVE STAGE
+# ------------------------------------------------------------------
+
+archive:preregistration:
+  stage: archive
+  script:
+    - echo "Packaging pre-registration artifacts for OSF/Zenodo..."
+    - mkdir -p dist/preregistration
+    - cp README.md dist/preregistration/ 2>/dev/null || true
+    - cp RESEARCH_PAPER/STRATIM_Research_Paper.md dist/preregistration/ 2>/dev/null || true
+    - cp AUTHORS.md dist/preregistration/ 2>/dev/null || true
+    - cp CITATION.cff dist/preregistration/ 2>/dev/null || true
+    - cp CHANGELOG.md dist/preregistration/ 2>/dev/null || true
+    - cp VERSION dist/preregistration/ 2>/dev/null || true
+    - cp LICENSE dist/preregistration/ 2>/dev/null || true
+    - if [ -d PREREGISTRATION ]; then cp -r PREREGISTRATION/* dist/preregistration/ 2>/dev/null || true; fi
+    - if [ -d DOCS ]; then cp -r DOCS/* dist/preregistration/ 2>/dev/null || true; fi
+    - ls -la dist/preregistration/
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 90 days
+  only:
+    - tags
+
+pages:
+  stage: archive
+  script:
+    - echo "Building GitLab Pages..."
+    - mkdir -p public
+    - cp README.md public/index.md 2>/dev/null || echo "# STRATIM" > public/index.md
+    - cp RESEARCH_PAPER/STRATIM_Research_Paper.md public/paper.md 2>/dev/null || true
+    - cp CITATION.cff public/ 2>/dev/null || true
+    - ls -la public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

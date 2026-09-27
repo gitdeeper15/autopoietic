@@ -1,0 +1,153 @@
+# =============================================================
+# STRATIM .gitignore
+# Version: 0.1.0-protocol
+# =============================================================
+
+# -------------------------------------------------------------
+# Empirical participant data — MUST NEVER be committed
+# -------------------------------------------------------------
+DATA/raw/*
+DATA/processed/*
+!DATA/raw/.gitkeep
+!DATA/processed/.gitkeep
+
+# Calibration sample data (identifiable, sensitive)
+DATA/calibration/*
+!DATA/calibration/.gitkeep
+
+# -------------------------------------------------------------
+# Simulation outputs (regenerable, large)
+# -------------------------------------------------------------
+SIMULATION/results/*.rds
+SIMULATION/results/*.RDS
+SIMULATION/results/*.csv
+SIMULATION/results/*.parquet
+SIMULATION/results/*.h5
+SIMULATION/results/*.nc
+!SIMULATION/results/.gitkeep
+
+# Synthetic data is regenerable from seed; do not commit large files
+SIMULATION/synthetic_data/*.rds
+SIMULATION/synthetic_data/*.csv
+!SIMULATION/synthetic_data/.gitkeep
+
+# -------------------------------------------------------------
+# R
+# -------------------------------------------------------------
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+renv/library/
+renv/staging/
+renv/local/
+renv/cache/
+renv/python/
+
+# Stan compiled models
+*.stan.exe
+*.rds
+*.rda
+# Keep explicitly tracked RDS files if needed (e.g., small fixtures)
+!tests/fixtures/*.rds
+
+# -------------------------------------------------------------
+# Python
+# -------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+.env.*
+
+# -------------------------------------------------------------
+# Testing and coverage
+# -------------------------------------------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# -------------------------------------------------------------
+# Jupyter
+# -------------------------------------------------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# -------------------------------------------------------------
+# Editors and IDEs
+# -------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# -------------------------------------------------------------
+# Operating system
+# -------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# -------------------------------------------------------------
+# Secrets and credentials
+# -------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+secrets/
+credentials/
+
+# -------------------------------------------------------------
+# Build artifacts and logs
+# -------------------------------------------------------------
+*.log
+logs/
+_archive/
+*.bak
+
+# -------------------------------------------------------------
+# Temporary files
+# -------------------------------------------------------------
+*.tmp
+*.temp
+.tmp/
+.temp/

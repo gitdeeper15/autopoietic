@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use STRATIM in your research, please cite this protocol."
+title: "STRATIM: A Dynamic State-Space Model of Strategic Imagination Capacity under Chronic Material Pressure"
+abstract: >-
+  STRATIM is a dynamic state-space model for examining Strategic Imagination
+  Capacity (SIC) under chronic material pressure. It separates objectively
+  audited opportunity structure, perceived opportunity, SIC, rehearsal,
+  recovery, and observable execution as analytically distinct variables,
+  and specifies a longitudinal, multi-source observational design with
+  pre-registered decision rules. At the current stage, STRATIM is a
+  protocol (v0.1.0-protocol) with no empirical data.
+type: software
+authors:
+  - family-names: Baladi
+    given-names: Samir
+    email: gitdeeper@gmail.com
+    orcid: "https://orcid.org/0009-0003-8903-0029"
+repository-code: "https://gitlab.com/gitdeeper15/STRATIM"
+url: "https://gitlab.com/gitdeeper15/STRATIM"
+license: MIT
+license-url: "https://gitlab.com/gitdeeper15/STRATIM/-/blob/main/LICENSE"
+version: "0.1.0-protocol"
+date-released: "2026-09-25"
+keywords:
+  - strategic imagination
+  - state-space model
+  - chronic scarcity
+  - opportunity structure
+  - cognitive capacity
+  - Bayesian hierarchical modeling
+  - longitudinal design
+  - pre-registration
+identifiers:
+  - type: url
+    value: "https://gitlab.com/gitdeeper15/STRATIM"
+    description: "Primary repository"
+preferred-citation:
+  type: article
+  title: "Strategic Imagination Capacity Under Chronic Material Pressure: A Dynamic State-Space Model"
+  authors:
+    - family-names: Baladi
+      given-names: Samir
+      email: gitdeeper@gmail.com
+      orcid: "https://orcid.org/0009-0003-8903-0029"
+  year: 2026
+  month: 9
+  status: "working manuscript, protocol stage"
+  url: "https://gitlab.com/gitdeeper15/STRATIM/-/blob/main/RESEARCH_PAPER/STRATIM_Research_Paper.md"

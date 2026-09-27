@@ -1,0 +1,99 @@
+MIT License
+
+Copyright (c) 2026 Samir Baladi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Scope of This License
+
+The MIT License above applies to:
+
+- All source code in this repository (R, Stan, Python).
+- All configuration files (`.gitlab-ci.yml`, `.pre-commit-config.yaml`,
+  `.readthedocs.yaml`, `Makefile`, `pyproject.toml`, `setup.py`, `setup.cfg`).
+- All simulation scripts and their outputs, where outputs are regenerable
+  from seed.
+- All infrastructure files (`.gitignore`, `.coveragerc`, `VERSION`).
+
+## Separate Licensing for Manuscript and Documentation
+
+The following are licensed under **Creative Commons Attribution 4.0
+International (CC-BY-4.0)**, not MIT:
+
+- `STRATIM_Research_Paper.md` — the manuscript.
+- `README.md` — repository documentation.
+- `AUTHORS.md`, `CONTRIBUTING.md`, `CHANGELOG.md` — project documentation.
+- Any files in `PREREGISTRATION/` — the protocol, hypotheses, and analysis plan.
+- Any files in `DOCS/` — decision rules, measurement risks, kernel
+  specification.
+
+This distinction reflects standard practice:
+
+- **Code** is licensed permissively (MIT) to allow reuse, modification,
+  and redistribution.
+- **Written research artifacts** (protocol, hypotheses, manuscript) are
+  licensed under CC-BY-4.0 to allow sharing and adaptation with attribution.
+
+## Attribution
+
+For code use:
+```
+
+Baladi, S. (2026). STRATIM: A Dynamic State-Space Model of Strategic
+Imagination Capacity under Chronic Material Pressure (Version
+0.1.0-protocol) [Computer software]. https://gitlab.com/gitdeeper15/STRATIM
+
+```
+
+For manuscript or protocol citation:
+```
+
+Baladi, S. (2026). Strategic Imagination Capacity Under Chronic Material
+Pressure: A Dynamic State-Space Model [Working manuscript, protocol stage].
+https://gitlab.com/gitdeeper15/STRATIM
+
+```
+
+## Data Licensing (Future)
+
+No empirical participant data exists in this repository. When empirical data
+is collected in future stages, it will not be committed to this public
+repository. Any future data sharing will follow separate ethical and legal
+protocols, including:
+
+- IRB approval for data sharing.
+- De-identification and anonymization.
+- Consent provisions for secondary use.
+- A separate data use agreement, if applicable.
+
+## No Warranty on Research Claims
+
+Nothing in this license constitutes a warranty about the scientific
+validity, generalizability, or completeness of the model or protocol.
+STRATIM is a pre-registered protocol at v0.1.0. No empirical validation
+has been conducted. Users of the code should not represent STRATIM as
+empirically validated.
+
+---
+
+**Version:** 0.1.0-protocol
+**Date:** September 2026
+**Copyright:** 2026 Samir Baladi

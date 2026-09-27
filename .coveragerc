@@ -1,0 +1,32 @@
+# STRATIM coverage configuration
+# Version: 0.1.0-protocol
+
+[run]
+source = src/stratim
+omit =
+    */tests/*
+    */test_*
+    */__init__.py
+    */_version.py
+    */conftest.py
+branch = True
+parallel = False
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    def __str__
+    if self.debug:
+    if __name__ == .__main__.:
+    raise AssertionError
+    raise NotImplementedError
+    pass
+    return NotImplemented
+    if TYPE_CHECKING:
+show_missing = True
+skip_covered = True
+precision = 2
+
+[html]
+directory = htmlcov
