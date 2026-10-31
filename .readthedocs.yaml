@@ -1,11 +1,10 @@
-# .readthedocs.yaml
-# Read the Docs configuration file for STRATIM
-# Version: 0.1.0-protocol
-# Date: 2026-09
+# Autopoietic Code Rewriting — Read the Docs configuration
+# Version: 0.1.0-research-draft
+# Date: 2026-10-31
 #
-# NOTE: STRATIM is at the protocol stage. Documentation source (docs/)
-# does not yet exist. This configuration is set up so that when docs/
-# is created, Read the Docs will build it automatically.
+# NOTE: Documentation source (docs/) currently contains specification files
+# (invariants_spec.md, experiment_protocol.md, decision_rules.md).
+# Sphinx conf.py will be added in a later phase.
 
 version: 2
 
@@ -13,12 +12,10 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3.11"
-    # R is not required for documentation build itself;
-    # only for rendering R-based outputs embedded in docs.
   jobs:
     pre_build:
-      - echo "Building STRATIM documentation (protocol stage)"
-      - echo "Version: 0.1.0-protocol"
+      - echo "Building Autopoietic Code Rewriting documentation (research-draft stage)"
+      - echo "Version: 0.1.0-research-draft"
       - if [ -d docs ]; then echo "docs/ found"; else echo "docs/ not yet created — build will use README"; fi
 
 python:
@@ -31,7 +28,7 @@ python:
 sphinx:
   configuration: docs/conf.py
   builder: html
-  # Do not fail the build on warnings during protocol stage
+  # Do not fail the build on warnings during research-draft stage
   fail_on_warning: false
 
 formats:
@@ -45,12 +42,12 @@ submodules:
 
 search:
   ranking:
-    protocol/*: 5
-    hypotheses/*: 4
-    design/*: 4
-    analysis/*: 4
+    invariants/*: 5
+    experiment/*: 5
+    decision/*: 4
+    architecture/*: 4
+    implementation/*: 3
     limitations/*: 3
-    simulation/*: 3
 
 redirects:
   index: README.md

@@ -1,111 +1,80 @@
-# STRATIM Authors and Contributors
+# Autopoietic Code Rewriting — Authors and Contributors
 
 ## Principal Investigator
 
 **Samir Baladi**
-*Interdisciplinary Researcher — Strategic Cognition, Dynamic State-Space Modeling*
-- Role: Conceptual architecture, hypotheses, study design, analysis plan
-- Email: gitdeeper@gmail.com
-- ORCID: 0009-0003-8903-0029
-- Affiliation: Independent researcher
+
+*Role:* Conceptual architecture, formal model, invariant specification, experimental design.
+
+*Contact:* gitdeeper@gmail.com
+
+*ORCID:* [0009-0003-8903-0029](https://orcid.org/0009-0003-8903-0029)
+
+*Affiliation:* Ronin Institute / Rite of Renaissance
 
 ## Manuscript Status
 
-STRATIM is currently at the **protocol stage** (v0.1.0-protocol). No empirical data has been collected. Contributors listed below are acknowledged for conceptual, methodological, or infrastructure contributions, or are identified as pending collaborators.
+This project is at the **initial research-draft stage** (`0.1.0-research-draft`).
+No pilot data has been collected. The implementation is under active development
+at function-level scope.
 
-## Conceptual and Methodological Contributors
+## Conceptual and Methodological Foundations
 
-### Scarcity and Decision-Making
+The research builds on:
 
-Contributors whose work informs the model:
+### Program Transformation and AST
+- Structured program representation and transformation (Knuth; Fraser & Hanson).
+- Concrete syntax trees with formatting preservation (LibCST project).
 
-- Researchers on cognitive bandwidth under chronic scarcity.
-- Researchers on opportunity structure and social mobility.
-- Researchers on future-oriented cognition and the capacity to aspire.
+### Formal Verification
+- Hoare logic for program correctness (Hoare, 1969).
+- Behavioral specification notations (Leavens et al., 2006).
 
-### Bayesian Hierarchical Modeling
+### Differential Testing and Empirical Validation
+- Differential testing as an empirical verification mechanism (McKeeman, 1998).
+- Experimental methodology in computer science (Tichy, 1998).
 
-Methodological foundations:
+### Dynamic Software Updating
+- Runtime software modification without full restart (Hicks & Nettles, 2005).
 
-- Developers and maintainers of Stan, brms, and lme4.
-- Researchers on longitudinal mixed-effects modeling.
-- Researchers on partial pooling and shrinkage estimation.
-
-### Kernel Identification
-
-Methodological foundations:
-
-- Researchers on temporal persistence and memory kernel estimation.
-- Researchers on exponential vs. power-law decay in cognitive and behavioral processes.
-
-### Measurement Design
-
-Methodological foundations:
-
-- Researchers on behavioral task design for cognitive capacity.
-- Researchers on structured opportunity auditing and administrative data verification.
+### Process Isolation
+- OS-level process separation and multiprocessing (Python `multiprocessing`).
 
 ## Institutional Support
 
-- **Status:** None confirmed as of v0.1.0-protocol.
-- **Pending:** Institutional review board (for future pilot study).
-- **Pending:** Calibration sample provider.
-- **Pending:** Pilot study site.
+- **Status:** None confirmed.
+- **Pending:** Institutional review board (for future pilot).
+- **Pending:** Compute resources for the 4-week pilot.
 
 ## Funding
 
 **Status:** No external funding confirmed.
 
 **Future funding targets:**
-
-- OSF Registered Report submission.
-- Pilot study support (ethics review, participant compensation, personnel).
-- Main study support (18-month longitudinal design).
-
-## Special Acknowledgments
-
-To researchers working on scarcity, opportunity structure, and future-oriented cognition, whose conceptual frameworks have shaped the model's structure.
-
-To the open-source scientific ecosystem (R, Stan, brms, lme4, renv, targets), which makes reproducible longitudinal modeling feasible.
-
-To the methodological community working on pre-registration and Registered Reports, whose work establishes the standard that this protocol aims to meet.
+- Pilot study support (compute, personnel).
+- Extended module-level experimentation.
+- Cross-language generalization.
 
 ## How to Contribute
 
-At the protocol stage, contributions are welcome in the following forms:
+At the research-draft stage, contributions are welcome in:
 
-- Simulation code improvements (R / Stan).
-- Power surface extension (more parameter combinations).
-- Kernel identifiability analysis.
-- Instrument design review (SIC task, opportunity audit).
+- Invariant implementations (syntactic, structural, behavioral).
+- Differential testing strategies (corpus design, fuzzing).
+- Isolation mechanisms (beyond multiprocessing).
+- Workload design (diverse function populations).
+- Failure injection scenarios.
 - Documentation clarity.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
 
 ## Contact
 
 - Scientific inquiries: gitdeeper@gmail.com
-- Repository issues: https://gitlab.com/gitdeeper15/STRATIM/-/issues
+- Repository issues: TBD
 - ORCID: https://orcid.org/0009-0003-8903-0029
 
 ---
 
-**Last Updated:** September 2026
-**Current Version:** 0.1.0-protocol
-
-## Source Code Repositories
-
-| Platform | URL | Role |
-|----------|-----|------|
-| GitLab | [gitlab.com/gitdeeper15/STRATIM](https://gitlab.com/gitdeeper15/STRATIM) | Primary |
-| GitHub | [github.com/gitdeeper15/STRATIM](https://github.com/gitdeeper15/STRATIM) | Mirror |
-
-## Status of Empirical Data
-
-No participant data has been collected. STRATIM is a pre-registered protocol at this stage. Data collection will begin only after:
-
-1. IRB approval.
-2. Pilot validation of instruments and thresholds.
-3. OSF pre-registration upload.
-
-Until these conditions are met, any claim about empirical findings from this repository is not warranted.
+**Last Updated:** 2026-10-31
+**Current Version:** 0.1.0-research-draft

@@ -1,37 +1,19 @@
-# STRATIM - Python tooling dependencies
-# Version: 0.1.0-protocol
-# Date: 2026-09
+# Autopoietic Code Rewriting — Runtime dependencies
+# Version: 0.1.0-research-draft
+# Date: 2026-10-31
 #
-# NOTE: Primary statistical modeling for STRATIM is done in R (see renv.lock).
-# Python is used for: instrument tooling, data wrangling, dashboards (later).
+# Scope: Function-level runtime AST rewriting (Python 3.11+).
 
-# Core scientific computing
-numpy>=1.24.0
-scipy>=1.11.0
-pandas>=2.0.0
-matplotlib>=3.7.0
-
-# Data validation and I/O
-pydantic>=2.0.0
-pyyaml>=6.0
-python-dotenv>=1.0.0
-
-# Utilities
-tqdm>=4.65.0
-click>=8.1.0
-rich>=13.0.0
-
-# Instrument tooling (planned)
-# streamlit>=1.20.0    # for local dashboards (uncomment when needed)
-# plotly>=5.13.0       # for visualization (uncomment when needed)
+# Core AST transformation
+libcst>=1.0.0
 
 # Testing
-pytest>=7.0.0
-pytest-cov>=4.0.0
+pytest>=8.0.0
+pytest-cov>=4.1.0
 
 # Code quality
-black>=22.0.0
-flake8>=4.0.0
-mypy>=0.9.0
-pre-commit>=2.0.0
-isort>=5.12.0
+black>=24.0.0
+flake8>=7.0.0
+mypy>=1.8.0
+pre-commit>=3.6.0
+isort>=5.13.0

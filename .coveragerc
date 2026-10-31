@@ -1,16 +1,16 @@
-# STRATIM coverage configuration
-# Version: 0.1.0-protocol
+# Autopoietic Code Rewriting coverage configuration
+# Version: 0.1.0-research-draft
 
 [run]
-source = src/stratim
+source = core,invariants,sandbox
 omit =
     */tests/*
     */test_*
     */__init__.py
-    */_version.py
-    */conftest.py
+    */.venv/*
 branch = True
-parallel = False
+parallel = True
+concurrency = multiprocessing
 
 [report]
 exclude_lines =

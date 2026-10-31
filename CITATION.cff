@@ -1,48 +1,37 @@
 cff-version: 1.2.0
-message: "If you use STRATIM in your research, please cite this protocol."
-title: "STRATIM: A Dynamic State-Space Model of Strategic Imagination Capacity under Chronic Material Pressure"
-abstract: >-
-  STRATIM is a dynamic state-space model for examining Strategic Imagination
-  Capacity (SIC) under chronic material pressure. It separates objectively
-  audited opportunity structure, perceived opportunity, SIC, rehearsal,
-  recovery, and observable execution as analytically distinct variables,
-  and specifies a longitudinal, multi-source observational design with
-  pre-registered decision rules. At the current stage, STRATIM is a
-  protocol (v0.1.0-protocol) with no empirical data.
+title: "Autopoietic Code Rewriting inside Isolated Execution Environments"
+message: "If you use this research or implementation, please cite as below."
 type: software
-authors:
-  - family-names: Baladi
-    given-names: Samir
-    email: gitdeeper@gmail.com
-    orcid: "https://orcid.org/0009-0003-8903-0029"
-repository-code: "https://gitlab.com/gitdeeper15/STRATIM"
-url: "https://gitlab.com/gitdeeper15/STRATIM"
+version: "0.1.0-research-draft"
+date-released: "2026-10-31"
 license: MIT
-license-url: "https://gitlab.com/gitdeeper15/STRATIM/-/blob/main/LICENSE"
-version: "0.1.0-protocol"
-date-released: "2026-09-25"
+abstract: |
+  This research investigates the conditions under which a software system
+  can modify its own source-code representation during runtime while
+  preserving structural integrity, execution continuity, and behavioral
+  consistency. The initial scope is restricted to individual top-level
+  Python functions using LibCST and multiprocessing-based logical isolation.
+  Four controlled transformation classes are considered: constant folding,
+  algebraic simplification, dead branch elimination, and local variable
+  renaming. The study separates four operational properties: execution
+  isolation, transformation validity, deployment integrity, and
+  recoverability. State Restoration Fidelity is introduced as a separate
+  evaluation dimension from rollback success.
 keywords:
-  - strategic imagination
-  - state-space model
-  - chronic scarcity
-  - opportunity structure
-  - cognitive capacity
-  - Bayesian hierarchical modeling
-  - longitudinal design
-  - pre-registration
-identifiers:
-  - type: url
-    value: "https://gitlab.com/gitdeeper15/STRATIM"
-    description: "Primary repository"
-preferred-citation:
-  type: article
-  title: "Strategic Imagination Capacity Under Chronic Material Pressure: A Dynamic State-Space Model"
-  authors:
-    - family-names: Baladi
-      given-names: Samir
-      email: gitdeeper@gmail.com
-      orcid: "https://orcid.org/0009-0003-8903-0029"
-  year: 2026
-  month: 9
-  status: "working manuscript, protocol stage"
-  url: "https://gitlab.com/gitdeeper15/STRATIM/-/blob/main/RESEARCH_PAPER/STRATIM_Research_Paper.md"
+  - autonomous software modification
+  - runtime code rewriting
+  - abstract syntax trees
+  - program transformation
+  - structural invariants
+  - differential testing
+  - runtime verification
+  - dynamic software updating
+  - recoverability
+authors:
+  - family-names: "Baladi"
+    given-names: "Samir"
+    email: "gitdeeper@gmail.com"
+    orcid: "https://orcid.org/0009-0003-8903-0029"
+    affiliation: "Ronin Institute / Rite of Renaissance"
+repository-code: "TBD"
+url: "TBD"

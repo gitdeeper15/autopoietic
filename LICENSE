@@ -26,11 +26,12 @@ SOFTWARE.
 
 The MIT License above applies to:
 
-- All source code in this repository (R, Stan, Python).
+- All source code in this repository (Python 3.11+).
+- All core implementation modules (`core/`, `invariants/`, `sandbox/`).
 - All configuration files (`.gitlab-ci.yml`, `.pre-commit-config.yaml`,
   `.readthedocs.yaml`, `Makefile`, `pyproject.toml`, `setup.py`, `setup.cfg`).
-- All simulation scripts and their outputs, where outputs are regenerable
-  from seed.
+- All experiment scripts and their outputs, where outputs are regenerable
+  from fixed seeds.
 - All infrastructure files (`.gitignore`, `.coveragerc`, `VERSION`).
 
 ## Separate Licensing for Manuscript and Documentation
@@ -38,62 +39,63 @@ The MIT License above applies to:
 The following are licensed under **Creative Commons Attribution 4.0
 International (CC-BY-4.0)**, not MIT:
 
-- `STRATIM_Research_Paper.md` — the manuscript.
+- `RESEARCH_PAPER/` — the research manuscript.
 - `README.md` — repository documentation.
 - `AUTHORS.md`, `CONTRIBUTING.md`, `CHANGELOG.md` — project documentation.
-- Any files in `PREREGISTRATION/` — the protocol, hypotheses, and analysis plan.
-- Any files in `DOCS/` — decision rules, measurement risks, kernel
-  specification.
+- `docs/invariants_spec.md` — the formal invariant specification.
+- `docs/experiment_protocol.md` — the pilot protocol.
+- `docs/decision_rules.md` — the transition criteria.
 
 This distinction reflects standard practice:
 
 - **Code** is licensed permissively (MIT) to allow reuse, modification,
   and redistribution.
-- **Written research artifacts** (protocol, hypotheses, manuscript) are
+- **Written research artifacts** (specification, protocol, manuscript) are
   licensed under CC-BY-4.0 to allow sharing and adaptation with attribution.
 
 ## Attribution
 
 For code use:
-```
-
-Baladi, S. (2026). STRATIM: A Dynamic State-Space Model of Strategic
-Imagination Capacity under Chronic Material Pressure (Version
-0.1.0-protocol) [Computer software]. https://gitlab.com/gitdeeper15/STRATIM
 
 ```
 
-For manuscript or protocol citation:
+Baladi, S. (2026). Autopoietic Code Rewriting inside Isolated Execution
+Environments (Version 0.1.0-research-draft) [Computer software].
+
 ```
 
-Baladi, S. (2026). Strategic Imagination Capacity Under Chronic Material
-Pressure: A Dynamic State-Space Model [Working manuscript, protocol stage].
-https://gitlab.com/gitdeeper15/STRATIM
+For manuscript or specification citation:
+
+```
+
+Baladi, S. (2026). Autopoietic Code Rewriting inside Isolated Execution
+Environments: Stability Conditions, Structural Invariants, and Controlled
+Runtime Transformation [Working manuscript, research-draft stage].
 
 ```
 
 ## Data Licensing (Future)
 
-No empirical participant data exists in this repository. When empirical data
-is collected in future stages, it will not be committed to this public
-repository. Any future data sharing will follow separate ethical and legal
-protocols, including:
+No empirical pilot data exists in this repository at the research-draft stage.
+When pilot data is collected, it will be stored according to the experiment
+protocol and will not include personal or sensitive information (all workloads
+are synthetic functions). Any future data sharing will follow:
 
-- IRB approval for data sharing.
-- De-identification and anonymization.
-- Consent provisions for secondary use.
-- A separate data use agreement, if applicable.
+- Explicit protocol documentation.
+- Fixed random seeds for reproducibility.
+- A separate data description if the scope expands.
 
 ## No Warranty on Research Claims
 
 Nothing in this license constitutes a warranty about the scientific
-validity, generalizability, or completeness of the model or protocol.
-STRATIM is a pre-registered protocol at v0.1.0. No empirical validation
-has been conducted. Users of the code should not represent STRATIM as
-empirically validated.
+validity, generalizability, or completeness of the model or experimental
+protocol. This project is an initial research manuscript at
+v0.1.0-research-draft. No pilot has been executed. No empirical validation
+has been conducted. Users of the code should not represent the architecture
+as empirically validated.
 
 ---
 
-**Version:** 0.1.0-protocol
-**Date:** September 2026
+**Version:** 0.1.0-research-draft
+**Date:** 2026-10-31
 **Copyright:** 2026 Samir Baladi

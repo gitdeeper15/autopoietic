@@ -1,56 +1,19 @@
 # =============================================================
-# STRATIM .gitignore
-# Version: 0.1.0-protocol
+# Autopoietic Code Rewriting .gitignore
+# Version: 0.1.0-research-draft
 # =============================================================
 
 # -------------------------------------------------------------
-# Empirical participant data — MUST NEVER be committed
+# Experiment outputs (regenerable from seeds)
 # -------------------------------------------------------------
-DATA/raw/*
-DATA/processed/*
-!DATA/raw/.gitkeep
-!DATA/processed/.gitkeep
+results/*.json
+results/*.csv
+results/*.log
+!results/.gitkeep
 
-# Calibration sample data (identifiable, sensitive)
-DATA/calibration/*
-!DATA/calibration/.gitkeep
-
-# -------------------------------------------------------------
-# Simulation outputs (regenerable, large)
-# -------------------------------------------------------------
-SIMULATION/results/*.rds
-SIMULATION/results/*.RDS
-SIMULATION/results/*.csv
-SIMULATION/results/*.parquet
-SIMULATION/results/*.h5
-SIMULATION/results/*.nc
-!SIMULATION/results/.gitkeep
-
-# Synthetic data is regenerable from seed; do not commit large files
-SIMULATION/synthetic_data/*.rds
-SIMULATION/synthetic_data/*.csv
-!SIMULATION/synthetic_data/.gitkeep
-
-# -------------------------------------------------------------
-# R
-# -------------------------------------------------------------
-.Rproj.user/
-.Rhistory
-.RData
-.Ruserdata
-*.Rproj
-renv/library/
-renv/staging/
-renv/local/
-renv/cache/
-renv/python/
-
-# Stan compiled models
-*.stan.exe
-*.rds
-*.rda
-# Keep explicitly tracked RDS files if needed (e.g., small fixtures)
-!tests/fixtures/*.rds
+# Do not commit large corpus fixtures
+tests/fixtures/large/
+!tests/fixtures/.gitkeep
 
 # -------------------------------------------------------------
 # Python
@@ -96,6 +59,9 @@ htmlcov/
 coverage.xml
 *.cover
 .hypothesis/
+.mypy_cache/
+.dmypy.json
+dmypy.json
 
 # -------------------------------------------------------------
 # Jupyter

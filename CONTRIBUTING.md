@@ -1,111 +1,141 @@
-# Contributing to STRATIM
+# Contributing to Autopoietic Code Rewriting
 
-STRATIM is currently at the **protocol stage** (v0.1.0-protocol). No empirical data has been collected. Contributions at this stage focus on the protocol itself, the simulation code, and the instrument design.
+This project is at the **initial research-draft stage** (`0.1.0-research-draft`).
+No pilot has been executed. Contributions at this stage focus on the formal
+model, invariant specification, implementation, and experimental design.
 
 ## What Contributions Are Welcome
 
-### 1. Simulation Code (R / Stan)
+### 1. Invariant Implementation
 
-The highest-priority contribution area. Currently, the `SIMULATION/code/` directory is under construction. Contributions are welcome in:
+The three invariant layers are the core of the admissibility policy:
 
-- Data generating process (R)
-- Kernel identifiability analysis (R)
-- Parameter recovery simulations (R / Stan)
-- Power surface computation (R)
-- Model diagnostics (Stan)
+- **Syntactic** (S1–S6): parse validity, signature preservation, no new imports, no new decorators.
+- **Structural** (T1–T5): binding preservation, no invalid cycles, no orphan variables, no new globals.
+- **Behavioral** (B1–B4): return values, exceptions, stdout trace, side effects over a defined corpus.
 
-**Standard:** R code follows the [tidyverse style guide](https://style.tidyverse.org/). Stan code follows the [Stan style guide](https://mc-stan.org/docs/stan-users-guide/style-guide.html).
+**Standard:** PEP 8, type hints, docstrings, unit tests with edge cases.
 
-### 2. Methodological Review
+### 2. Differential Testing Strategies
 
-Critical review of the protocol is welcome, particularly regarding:
+The behavioral layer relies on differential testing between P₀ and P₁ over a defined corpus.
 
-- Whether the two-state-variable separation (`O^objective`, `SIC`) is empirically identifiable.
-- Whether the ROPE-based decision rules (ε, MID, Δ*_AUC) are adequately specified.
-- Whether the kernel comparison (H5) is feasible within the 18-month window.
-- Whether the model reduction sequence is adequate for convergence failures.
-- Whether the SIC task dimension structure (generate, elaborate, compare, revise) is psychometrically defensible.
+Contributions welcome in:
+- Corpus design (valid, edge, invalid, fuzzed inputs).
+- Fuzzing infrastructure with fixed seeds.
+- Exception fingerprint comparison.
+- stdout trace comparison.
 
-### 3. Instrument Design
+### 3. Isolation Mechanisms
 
-Review of planned instruments, including:
+The initial pilot uses `multiprocessing` as **logical isolation** — not a
+security sandbox. Contributions comparing stronger isolation (Docker, gVisor,
+Firecracker, WASM) are welcome, but must clearly state the isolation model.
 
-- SIC task forms A–D (parallel-form equivalence).
-- Opportunity audit instrument (domain coverage, accessibility criteria).
-- Monthly detection instrument (sensitivity vs. burden tradeoff).
-- Rehearsal log (retrospective bias minimization).
-- Recovery measures (objective, subjective, behavioral components).
+### 4. Workload Design
 
-### 4. Documentation
+Three workload categories are proposed:
+- **W1 Micro-benchmark:** simple computational functions.
+- **W2 Representative:** functions from small application components.
+- **W3 Edge cases:** early return, exception-raising, None-returning functions.
 
-Clarifying the protocol, improving the README, or contributing to `DOCS/`.
+Contributions welcome: diverse function populations that stress the invariants
+without extending the phase-I scope (no decorators, closures, or stateful functions).
 
-## What Contributions Are Not Welcome
+### 5. Failure Injection Scenarios
 
-The following are explicitly outside the scope of STRATIM:
+The pilot uses four failure categories (FI-1 to FI-4):
+1. Syntactic corruption.
+2. Structural corruption (unresolved symbols, invalid scope).
+3. Silent semantic change (e.g., `+` → `-`).
+4. Timeout injection.
 
-- Empirical data submissions (none exists yet, and the design has strict eligibility criteria).
-- Deployment infrastructure (dashboards, APIs, web apps).
-- Hardware or sensor integration.
-- PyPI package releases at this stage.
-- Changes to hypotheses or decision rules after pre-registration without explicit documentation as protocol amendments.
+Contributions welcome: additional injection scenarios that stress the invariant
+layers without changing them.
+
+### 6. Documentation
+
+Clarifying `docs/invariants_spec.md`, `docs/experiment_protocol.md`, or
+`docs/decision_rules.md`.
+
+## What Contributions Are Not Welcome at Phase I
+
+The following are outside the current scope:
+
+- Module-level or system-level rewriting.
+- Stateful function support.
+- Adversarial security isolation.
+- Formal semantic equivalence proofs.
+- Cross-language generalization.
+- Modifications to invariants that weaken their admissibility policy without
+  documented rationale.
 
 ## How to Contribute
 
 ### Reporting Issues
 
-Open an issue on [GitLab Issues](https://gitlab.com/gitdeeper15/STRATIM/-/issues) with:
-
-- A clear description of the issue.
-- The relevant section of the protocol or code.
-- A suggested resolution, if available.
+Open an issue with:
+- A clear description.
+- The relevant module or document.
+- A minimal reproduction if applicable.
 
 ### Submitting Code Changes
 
 1. Fork the repository.
 2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature
+
 ```
 
-3. Make your changes.
+git checkout -b feature/your-feature
+
+```
+
+3. Make changes.
 4. Run tests and linters:
-   ```bash
-   make test
-   make lint
-   ```
+
+```
+
+python -m pytest -v
+black .
+isort .
+flake8 .
+mypy core invariants sandbox
+
+```
+
 5. Commit with a descriptive message.
-6. Push and open a Merge Request.
+6. Open a Merge Request / Pull Request.
 
-Code Standards
+## Code Standards
 
-· Python: PEP 8, type hints, docstrings (Google style). Format with black, isort, flake8, mypy.
-· R: tidyverse style, styler for formatting, lintr for linting.
-· Stan: Stan style guide.
-· Markdown: markdownlint (MD013 disabled).
-· Commit messages: imperative mood, clear scope.
+| Language | Standard |
+|----------|----------|
+| Python | PEP 8, black (88 chars), isort, flake8, mypy |
+| Markdown | markdownlint (MD013 disabled) |
+| Commit messages | Imperative mood, clear scope |
 
-Review Process
+**Test coverage:** ≥ 80% for new modules.
 
-· All changes are reviewed by the maintainer.
-· Changes that affect hypotheses, decision rules, or the primary model require explicit documentation as protocol amendments.
-· Changes to the analysis plan after data collection begins are documented as deviations and reported in the manuscript.
+## Review Process
 
-A Note on Protocol Integrity
+- All changes are reviewed.
+- Changes to the invariant specification or admissibility policy require
+  explicit documentation in `CHANGELOG.md` with rationale.
+- Changes to the experimental protocol after the pilot begins are documented
+  as protocol amendments.
 
-STRATIM is a pre-registered protocol. Changes to hypotheses, decision rules, or the primary model after pre-registration must be:
+## A Note on Protocol Integrity
 
-1. Documented in CHANGELOG.md.
-2. Labeled as protocol amendments (if before data collection) or deviations (if after).
-3. Reported in the final manuscript with explicit rationale.
+The experiment protocol is fixed before the pilot begins. The transition
+criteria (TSR ≥ 90%, UDR ≥ 95%, OH ≤ 2×, SRF = 100%) are proposed
+engineering gates — not scientific laws. They may be revised based on
+baseline calibration, but any revision is documented.
 
-This ensures the protocol's pre-registration remains auditable.
+## Contact
 
-Contact
-
-· Issues: https://gitlab.com/gitdeeper15/STRATIM/-/issues
-· Email: gitdeeper@gmail.com
+- Issues: https://gitlab.com/gitdeeper15/Autopoietic/-/issues
+- Email: gitdeeper@gmail.com
 
 ---
 
-Thank you for contributing to STRATIM.
+Thank you for contributing to Autopoietic Code Rewriting.
