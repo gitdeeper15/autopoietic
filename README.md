@@ -10,7 +10,8 @@
 ---
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23475104-1B4F72?logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.23475104)
-[![OSF Preregistration](https://img.shields.io/badge/OSF-Preregistered-1B4F72?logo=osf&logoColor=white)](https://doi.org/10.17605/OSF.IO/PT2K6)
+[![OSF Preregistration](https://img.shields.io/badge/OSF-Preregistered-1B4F72?logo=osf&logoColor=white)](https://doi.org/10.17605/OSF.IO/RA2X6)
+[![Internet Archive](https://img.shields.io/badge/Internet%20Archive-Archived-8b4513?logo=internetarchive&logoColor=white)](https://archive.org/details/osf-registrations-ra2x6-v1)
 [![PyPI version](https://img.shields.io/badge/PyPI-autopoietic--engine-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/autopoietic-engine)
 [![Figshare DOI](https://img.shields.io/badge/DOI-10.6084%2Fm9.figshare.32525466-1B4F72?logo=figshare&logoColor=white)](https://doi.org/10.6084/m9.figshare.32525466)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0003--8903--0029-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0003-8903-0029)
@@ -452,7 +453,8 @@ See [`RESEARCH_PAPER/`](RESEARCH_PAPER/) for the full manuscript.
 | PyPI | [pypi.org/project/autopoietic-engine](https://pypi.org/project/autopoietic-engine) | Python package distribution |
 | Zenodo | [doi.org/10.5281/zenodo.23475104](https://doi.org/10.5281/zenodo.23475104) | Citable DOI, paper and code archive |
 | Figshare | [doi.org/10.6084/m9.figshare.32525466](https://doi.org/10.6084/m9.figshare.32525466) | Secondary citable archive |
-| OSF Preregistration | [doi.org/10.17605/OSF.IO/PT2K6](https://doi.org/10.17605/OSF.IO/PT2K6) | Pre-registered study protocol |
+| OSF Preregistration | [doi.org/10.17605/OSF.IO/RA2X6](https://doi.org/10.17605/OSF.IO/RA2X6) | Pre-registered study protocol |
+| Internet Archive | [archive.org/details/osf-registrations-ra2x6-v1](https://archive.org/details/osf-registrations-ra2x6-v1) | Permanent archival copy of OSF registration |
 | Website | [autopoietic.netlify.app](https://autopoietic.netlify.app) | Live documentation and dashboard |
 | ORCID | [orcid.org/0009-0003-8903-0029](https://orcid.org/0009-0003-8903-0029) | Researcher identity |
 
@@ -487,9 +489,22 @@ If this project contributes to your research, please cite using one of the follo
                   for Controlled Runtime AST Transformation},
   year         = {2026},
   publisher    = {Open Science Framework},
-  doi          = {10.17605/OSF.IO/PT2K6},
-  url          = {https://doi.org/10.17605/OSF.IO/PT2K6},
+  doi          = {10.17605/OSF.IO/RA2X6},
+  url          = {https://doi.org/10.17605/OSF.IO/RA2X6},
   note         = {OSF Preregistration}
+}
+```
+
+Internet Archive (Permanent Copy)
+
+```bibtex
+@misc{baladi2026autopoietic_archive,
+  author       = {Baladi, Samir},
+  title        = {{Autopoietic Code Rewriting}: Pre-registered Pilot Protocol},
+  year         = {2026},
+  publisher    = {Internet Archive},
+  url          = {https://archive.org/details/osf-registrations-ra2x6-v1},
+  note         = {Permanent archival copy of OSF registration 10.17605/OSF.IO/RA2X6}
 }
 ```
 
@@ -586,7 +601,7 @@ Ronin Institute / Rite of Renaissance
 **Autopoietic Code Rewriting · v0.2.0-implementation · October 2026**
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23475104-1B4F72?logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.23475104)
-[![OSF](https://img.shields.io/badge/OSF-Preregistered-1B4F72?logo=osf&logoColor=white)](https://doi.org/10.17605/OSF.IO/PT2K6)
+[![OSF](https://img.shields.io/badge/OSF-Preregistered-1B4F72?logo=osf&logoColor=white)](https://doi.org/10.17605/OSF.IO/RA2X6)
 [![License: MIT](https://img.shields.io/badge/license-MIT-27ae60)](LICENSE)
 
 *Function-Level Scope · Experimental Validation Pending*
