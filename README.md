@@ -1,3 +1,4 @@
+
 <div align="center">
 
 # Autopoietic Code Rewriting
@@ -8,11 +9,17 @@
 
 ---
 
-[![Python](https://img.shields.io/badge/python-3.11+-3776ab?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![LibCST](https://img.shields.io/badge/LibCST-1.x-2c5f7d?style=flat-square)](https://libcst.readthedocs.io/)
-[![Status](https://img.shields.io/badge/status-experimental--design-blue?style=flat-square)]()
-[![Scope](https://img.shields.io/badge/scope-function--level-orange?style=flat-square)]()
-[![License: MIT](https://img.shields.io/badge/license-MIT-27ae60?style=flat-square)](LICENSE)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23475104-1B4F72?logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.23475104)
+[![OSF Preregistration](https://img.shields.io/badge/OSF-Preregistered-1B4F72?logo=osf&logoColor=white)](https://doi.org/10.17605/OSF.IO/PT2K6)
+[![PyPI version](https://img.shields.io/badge/PyPI-autopoietic--engine-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/autopoietic-engine)
+[![Figshare DOI](https://img.shields.io/badge/DOI-10.6084%2Fm9.figshare.32525466-1B4F72?logo=figshare&logoColor=white)](https://doi.org/10.6084/m9.figshare.32525466)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0003--8903--0029-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0003-8903-0029)
+[![Python](https://img.shields.io/badge/python-3.11+-3776ab?logo=python&logoColor=white)](https://python.org)
+[![LibCST](https://img.shields.io/badge/LibCST-1.x-2c5f7d)](https://libcst.readthedocs.io/)
+[![Status](https://img.shields.io/badge/status-experimental--design-blue)]()
+[![Scope](https://img.shields.io/badge/scope-function--level-orange)]()
+[![Site](https://img.shields.io/badge/site-autopoietic.netlify.app-00c7b7)](https://autopoietic.netlify.app)
+[![License: MIT](https://img.shields.io/badge/license-MIT-27ae60)](LICENSE)
 
 ---
 
@@ -20,13 +27,13 @@
 
 ---
 
-[Research Paper](RESEARCH_PAPER/) · [Protocol](PREREGISTRATION/) · [Simulation](SIMULATION/) · [Instruments](INSTRUMENTS/) · [Quick Start](#-quick-start)
+[Research Paper](RESEARCH_PAPER/) · [Protocol](PREREGISTRATION/) · [Simulation](SIMULATION/) · [Instruments](INSTRUMENTS/) · [Quick Start](#-quick-start) · [Citation](#-citation)
 
 </div>
 
 ---
 
-## Overview
+## 📌 Overview
 
 **Autopoietic Code Rewriting** investigates the conditions under which a software system can modify its own source-code representation during runtime while preserving structural integrity, execution continuity, and behavioral consistency.
 
@@ -39,16 +46,40 @@ The initial implementation is deliberately restricted to **individual top-level 
 ### Core Principle
 
 ```
-
 Accept(P₁) ⟺ I_syntactic(P₁) ∧ I_structural(P₁) ∧ I_behavioral(P₁, P₀)
 Reject(P₁) ⟺ ¬I_s ∨ ¬I_t ∨ ¬I_b
 Inconclusive ⟺ timeout (never treated as Accept)
-
 ```
+
+## 🗂️ Table of Contents
+
+- [Overview](#-overview)
+- [What's New](#-whats-new)
+- [Key Features](#-key-features)
+- [Four Operational Dimensions](#-four-operational-dimensions)
+- [Four Transformation Classes](#-four-transformation-classes-initial-scope)
+- [Six-Stage Pipeline](#-six-stage-pipeline)
+- [Implementation Status](#-implementation-status)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Verification Model](#-verification-model)
+- [Evaluation Metrics](#-evaluation-metrics)
+- [Transition Criteria](#-transition-criteria-function--module)
+- [Four-Week Pilot Plan](#-four-week-pilot-plan)
+- [Research Status](#-research-status)
+- [Threats to Validity](#-threats-to-validity)
+- [Limitations](#-limitations)
+- [Research Paper](#-research-paper)
+- [Platforms & Mirrors](#-platforms--mirrors)
+- [Citation](#-citation)
+- [License](#-license)
+- [Author](#-author)
 
 ---
 
-## What's New
+## ✨ What's New
 
 > **Status:** Initial Research Draft — Implementation Specification
 > **Scope:** Function-Level Runtime Code Rewriting (Python 3.11+ / LibCST / multiprocessing)
@@ -69,7 +100,7 @@ This release establishes:
 
 ---
 
-## Key Features
+## 🔑 Key Features
 
 | Feature | Description |
 |---------|-------------|
@@ -85,7 +116,7 @@ This release establishes:
 
 ---
 
-## Four Operational Dimensions
+## ⚙️ Four Operational Dimensions
 
 > No dimension is assumed to guarantee another.
 
@@ -98,7 +129,7 @@ This release establishes:
 
 ---
 
-## Four Transformation Classes (Initial Scope)
+## 🧩 Four Transformation Classes (Initial Scope)
 
 | Transformation | Example | Invariant Tested |
 |----------------|---------|------------------|
@@ -112,27 +143,24 @@ Function signature changes · imports · closures · decorators · cross-functio
 
 ---
 
-## Six-Stage Pipeline
+## 🔁 Six-Stage Pipeline
 
 ```
-
 ┌─────────────────────────────────────────────────────────────┐
 │  1. Extract      →  Load P₀, preserve source hash          │
 │  2. Analyze      →  Build dependency graph, symbol table   │
 │  3. Transform    →  Produce candidate P₁ = T(P₀, θ)        │
 │  4. Sandbox      →  Execute P₁ in isolated multiprocessing │
 │  5. Verify       →  I_s ∧ I_t ∧ I_b + differential test    │
-│  6. Deploy       →  Atomic swap  or  rollback              │
+│  6. Deploy       →  Atomic swap  or  rollback               │
 └─────────────────────────────────────────────────────────────┘
-
 ```
 
 Each stage is implemented as an independent module with its own test suite.
 
 ---
 
-
-## Implementation Status
+## 📊 Implementation Status
 
 | Layer | Module | Spec | Status | Tests |
 |-------|--------|------|--------|-------|
@@ -153,11 +181,9 @@ Each stage is implemented as an independent module with its own test suite.
 
 ---
 
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-
 Autopoietic/
 ├── README.md                       # this file
 ├── CHANGELOG.md                    # version history
@@ -208,19 +234,18 @@ Autopoietic/
 ├── DATA/                           # future: raw/processed datasets
 ├── MODEL/                          # future: numerical model
 ├── INSTRUMENTS/                    # future: measurement instruments
-├── DOCS/                           # extended documentation
 ├── PUBLICATION/                    # future: release artifacts
 └── results/                        # experiment outputs (JSON)
-
 ```
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
-# Clone / enter the project
-cd /storage/emulated/0/Download/Autopoietic
+# Clone the repository
+git clone https://github.com/gitdeeper15/autopoietic.git
+cd autopoietic
 
 # Create and activate virtual environment
 python -m venv .venv
@@ -239,9 +264,7 @@ python -c "import libcst; print('libcst', libcst.__version__)"
 
 ---
 
-Installation
-
-Python (required):
+## 📦 Installation
 
 ```bash
 # Termux / Debian
@@ -251,16 +274,17 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Dependencies:
+**Dependencies:**
 
-Package Purpose
-libcst Concrete syntax tree with formatting preservation
-pytest Test runner
-pytest-cov Coverage reporting
+| Package | Purpose |
+|---------|---------|
+| `libcst` | Concrete syntax tree with formatting preservation |
+| `pytest` | Test runner |
+| `pytest-cov` | Coverage reporting |
 
 ---
 
-Usage
+## 🧩 Usage
 
 ```bash
 # Extract a function and inspect its AST representation
@@ -284,177 +308,287 @@ python -m pytest tests/test_transformer.py -v
 
 ---
 
-Verification Model
+## 🔍 Verification Model
 
-Syntactic Invariants (I_s)
+### Syntactic Invariants (I_s)
 
-# Condition Check
-S1 P₁ parses as valid Module cst.parse_module
-S2 Contains one FunctionDef node count
-S3 Function name unchanged name compare
-S4 Signature unchanged params compare
-S5 No new decorators decorator set
-S6 No new imports Import scan
+| # | Condition | Check |
+|---|-----------|-------|
+| S1 | P₁ parses as valid Module | `cst.parse_module` |
+| S2 | Contains one FunctionDef node | count |
+| S3 | Function name unchanged | name compare |
+| S4 | Signature unchanged | params compare |
+| S5 | No new decorators | decorator set |
+| S6 | No new imports | Import scan |
 
-Structural Invariants (I_t)
+### Structural Invariants (I_t)
 
-# Condition Check
-T1 Every Name has a binding scope analysis
-T2 No invalid dependency cycles DFS cycle detection
-T3 No orphan variables liveness diff
-T4 No new global statements AST scan
-T5 All local calls resolve symbol table
+| # | Condition | Check |
+|---|-----------|-------|
+| T1 | Every Name has a binding | scope analysis |
+| T2 | No invalid dependency cycles | DFS cycle detection |
+| T3 | No orphan variables | liveness diff |
+| T4 | No new global statements | AST scan |
+| T5 | All local calls resolve | symbol table |
 
-Behavioral Invariants (I_b)
+### Behavioral Invariants (I_b)
 
-# Condition Check
-B1 Return values match on corpus differential
-B2 Exceptions match (type + message) differential
-B3 stdout trace matches differential
-B4 No new side effects sandbox enforcement
+| # | Condition | Check |
+|---|-----------|-------|
+| B1 | Return values match on corpus | differential |
+| B2 | Exceptions match (type + message) | differential |
+| B3 | stdout trace matches | differential |
+| B4 | No new side effects | sandbox enforcement |
 
 Timeout → Inconclusive (never Accepted).
 
 ---
 
-Evaluation Metrics
+## 📏 Evaluation Metrics
 
-Metric Definition
-TSR Transformation Success Rate
-UDR Unsafe-change Detection Rate
-FPR False Positive Rate (valid rejected)
-FNR False Negative Rate (unsafe accepted)
-OH Runtime Overhead vs. baseline
-MTTR Mean Time to Recovery
-SRF State Restoration Fidelity (deferred)
-Coverage Proportion of invariants actually verified
+| Metric | Definition |
+|--------|------------|
+| TSR | Transformation Success Rate |
+| UDR | Unsafe-change Detection Rate |
+| FPR | False Positive Rate (valid rejected) |
+| FNR | False Negative Rate (unsafe accepted) |
+| OH | Runtime Overhead vs. baseline |
+| MTTR | Mean Time to Recovery |
+| SRF | State Restoration Fidelity (deferred) |
+| Coverage | Proportion of invariants actually verified |
 
 Numeric thresholds are established after baseline calibration — not assumed.
 
 ---
 
-Transition Criteria (Function → Module)
+## 🚦 Transition Criteria (Function → Module)
 
-Criterion Required Measurement
-Mechanism stability TSR ≥ 90% on valid transforms pilot
-Unsafe-change detection UDR ≥ 95% on injected failures FI suite
-Computational cost OH ≤ 2× baseline repeated benchmark
-Recovery fidelity SRF = 100% on controlled tests recovery experiments
+| Criterion | Required | Measurement |
+|-----------|----------|-------------|
+| Mechanism stability | TSR ≥ 90% on valid transforms | pilot |
+| Unsafe-change detection | UDR ≥ 95% on injected failures | FI suite |
+| Computational cost | OH ≤ 2× baseline | repeated benchmark |
+| Recovery fidelity | SRF = 100% on controlled tests | recovery experiments |
 
 If any criterion fails → revise architecture before expansion.
 
 ---
 
-Four-Week Pilot Plan
+## 📅 Four-Week Pilot Plan
 
-Week Focus Deliverable
-1 Extraction + Transformation extractor.py, transformer.py, unit tests
-2 Invariant Verification invariants/, differential.py, FI suite
-3 Isolation + Deployment isolated_runner.py, deployer.py, rollback
-4 Pilot Evaluation Baseline metrics, transition decision
-
----
-
-Research Status
-
-Dimension Status
-Formal model ✅ Defined (paper §3)
-Architecture ✅ Specified (paper §4)
-Invariant layers ✅ Specified (paper §6)
-Implementation 🟡 In progress (function-level)
-Pilot data ❌ Not yet collected
-Empirical results ❌ Not yet available
-Module-level ❌ Out of scope (Phase II)
-Stateful recovery ❌ Deferred (Phase III)
-Adversarial isolation ❌ Out of scope
+| Week | Focus | Deliverable |
+|------|-------|-------------|
+| 1 | Extraction + Transformation | `extractor.py`, `transformer.py`, unit tests |
+| 2 | Invariant Verification | `invariants/`, `differential.py`, FI suite |
+| 3 | Isolation + Deployment | `isolated_runner.py`, `deployer.py`, rollback |
+| 4 | Pilot Evaluation | Baseline metrics, transition decision |
 
 ---
 
-Threats to Validity
+## 📈 Research Status
 
-Type Concern Mitigation
-Construct Observation model determines what differential testing can detect Explicit corpus + documented observables
-Internal Results may reflect implementation details Fixed hardware, versions, workloads
-External Python-only results may not generalize Scope explicitly restricted
-Statistical Pilot too small for general claims Feasibility only; variance for future study
-Security multiprocessing is not a hardened sandbox Documented; not claimed
+| Dimension | Status |
+|-----------|--------|
+| Formal model | ✅ Defined (paper §3) |
+| Architecture | ✅ Specified (paper §4) |
+| Invariant layers | ✅ Specified (paper §6) |
+| Implementation | 🟡 In progress (function-level) |
+| Pilot data | ❌ Not yet collected |
+| Empirical results | ❌ Not yet available |
+| Module-level | ❌ Out of scope (Phase II) |
+| Stateful recovery | ❌ Deferred (Phase III) |
+| Adversarial isolation | ❌ Out of scope |
 
 ---
 
-Limitations
+## ⚠️ Threats to Validity
+
+| Type | Concern | Mitigation |
+|------|---------|------------|
+| Construct | Observation model determines what differential testing can detect | Explicit corpus + documented observables |
+| Internal | Results may reflect implementation details | Fixed hardware, versions, workloads |
+| External | Python-only results may not generalize | Scope explicitly restricted |
+| Statistical | Pilot too small for general claims | Feasibility only; variance for future study |
+| Security | multiprocessing is not a hardened sandbox | Documented; not claimed |
+
+---
+
+## 🧱 Limitations
 
 The present study is restricted to:
 
-· Python 3.11+ and LibCST
-· Individual top-level functions (no methods, closures, decorators)
-· Stateless functions (no mutable global state)
-· Four transformation classes
-· Logical isolation via multiprocessing
+- Python 3.11+ and LibCST
+- Individual top-level functions (no methods, closures, decorators)
+- Stateless functions (no mutable global state)
+- Four transformation classes
+- Logical isolation via multiprocessing
 
-Not addressed in Phase I:
+**Not addressed in Phase I:**
 
-· Formal semantic equivalence (only empirical over corpus)
-· Concurrency and live deployment
-· Cross-language generalization
-· Adversarial code isolation
-
----
-
-Research Paper
-
-Title: Autopoietic Code Rewriting inside Isolated Execution Environments — Stability Conditions, Structural Invariants, and Controlled Runtime Transformation
-
-Status: Initial Complete Research Manuscript — Experimental Validation Pending
-Scope: Function-Level Runtime Code Rewriting
-Implementation Baseline: Python 3.11+ / LibCST / multiprocessing
-
-See RESEARCH_PAPER/ for the full manuscript.
+- Formal semantic equivalence (only empirical over corpus)
+- Concurrency and live deployment
+- Cross-language generalization
+- Adversarial code isolation
 
 ---
 
-Contributing
+## 📄 Research Paper
 
-At the implementation-specification stage, contributions are welcome in:
+**Title:** Autopoietic Code Rewriting inside Isolated Execution Environments — Stability Conditions, Structural Invariants, and Controlled Runtime Transformation
 
-· Invariant implementations (syntactic, structural, behavioral)
-· Differential testing strategies (corpus design, fuzzers)
-· Isolation mechanisms (beyond multiprocessing)
-· Workload design (diverse function populations)
-· Failure injection scenarios
-· Documentation clarity
+**Status:** Initial Complete Research Manuscript — Experimental Validation Pending
+**Scope:** Function-Level Runtime Code Rewriting
+**Implementation Baseline:** Python 3.11+ / LibCST / multiprocessing
 
-Standards: PEP 8, type hints, docstrings, test coverage ≥ 80%.
+See [`RESEARCH_PAPER/`](RESEARCH_PAPER/) for the full manuscript.
 
 ---
 
-License
+## 🌐 Platforms & Mirrors
 
-· Code: MIT License (see LICENSE)
-· Manuscript and documentation: CC-BY-4.0
+| Platform | URL | Role |
+|----------|-----|------|
+| GitHub (Primary) | [github.com/gitdeeper13/autopoietic](https://github.com/gitdeeper13/autopoietic) | Source code, issues, PRs |
+| PyPI | [pypi.org/project/autopoietic-engine](https://pypi.org/project/autopoietic-engine) | Python package distribution |
+| Zenodo | [doi.org/10.5281/zenodo.23475104](https://doi.org/10.5281/zenodo.23475104) | Citable DOI, paper and code archive |
+| Figshare | [doi.org/10.6084/m9.figshare.32525466](https://doi.org/10.6084/m9.figshare.32525466) | Secondary citable archive |
+| OSF Preregistration | [doi.org/10.17605/OSF.IO/PT2K6](https://doi.org/10.17605/OSF.IO/PT2K6) | Pre-registered study protocol |
+| Website | [autopoietic.netlify.app](https://autopoietic.netlify.app) | Live documentation and dashboard |
+| ORCID | [orcid.org/0009-0003-8903-0029](https://orcid.org/0009-0003-8903-0029) | Researcher identity |
 
 ---
 
-Citation
+## 📖 Citation
+
+If this project contributes to your research, please cite using one of the following formats.
+
+### Zenodo Archive (Paper and Code)
 
 ```bibtex
-@misc{autopoietic_rewriting_2026,
-  title  = {Autopoietic Code Rewriting inside Isolated Execution
-            Environments: Stability Conditions, Structural Invariants,
-            and Controlled Runtime Transformation},
-  year   = {2026},
-  version = {0.1.0-research-draft},
-  note   = {Initial Research Manuscript — Experimental Validation Pending}
+@software{baladi2026autopoietic_zenodo,
+  author       = {Baladi, Samir},
+  title        = {{Autopoietic Code Rewriting}: Controlled Runtime AST
+                  Transformation inside Isolated Execution Environments},
+  year         = {2026},
+  publisher    = {Zenodo},
+  version      = {0.2.0-implementation},
+  doi          = {10.5281/zenodo.23475104},
+  url          = {https://doi.org/10.5281/zenodo.23475104},
+  note         = {Ronin Institute / Rite of Renaissance}
 }
 ```
 
-DOI, OSF, and Zenodo records to be added upon submission.
+### OSF Preregistration
 
+```bibtex
+@misc{baladi2026autopoietic_osf,
+  author       = {Baladi, Samir},
+  title        = {{Autopoietic Code Rewriting}: Pre-registered Study Protocol
+                  for Controlled Runtime AST Transformation},
+  year         = {2026},
+  publisher    = {Open Science Framework},
+  doi          = {10.17605/OSF.IO/PT2K6},
+  url          = {https://doi.org/10.17605/OSF.IO/PT2K6},
+  note         = {OSF Preregistration}
+}
+```
+
+### Research Paper
+
+```bibtex
+@article{baladi2026autopoietic,
+  author       = {Baladi, Samir},
+  title        = {Autopoietic Code Rewriting inside Isolated Execution
+                  Environments: Stability Conditions, Structural Invariants,
+                  and Controlled Runtime Transformation},
+  year         = {2026},
+  version      = {1.0},
+  doi          = {10.5281/zenodo.23475104},
+  url          = {https://doi.org/10.5281/zenodo.23475104},
+  note         = {Ronin Institute / Rite of Renaissance}
+}
+```
+### PyPI Package
+
+```bibtex
+@software{baladi2026autopoietic_pypi,
+  author       = {Baladi, Samir},
+  title        = {{autopoietic-engine}: Controlled Runtime AST Transformation
+                  inside Isolated Execution Environments},
+  year         = {2026},
+  publisher    = {Python Package Index},
+  url          = {https://pypi.org/project/autopoietic-engine},
+  note         = {Python package, MIT License}
+}
+```
+### Figshare Archive
+
+```bibtex
+@misc{baladi2026autopoietic_figshare,
+  author       = {Baladi, Samir},
+  title        = {{Autopoietic Code Rewriting}: Controlled Runtime AST
+                  Transformation inside Isolated Execution Environments},
+  year         = {2026},
+  publisher    = {figshare},
+  doi          = {10.6084/m9.figshare.32525466},
+  url          = {https://doi.org/10.6084/m9.figshare.32525466},
+  note         = {Ronin Institute / Rite of Renaissance}
+}
+```
+
+### APA (inline)
+
+> Baladi, S. (2026). *Autopoietic Code Rewriting inside Isolated Execution Environments: Stability Conditions, Structural Invariants, and Controlled Runtime Transformation* (Version 0.2.0-implementation). Zenodo. https://doi.org/10.5281/zenodo.23475104
+
+---
+
+## 📜 License
+
+- **Code:** MIT License (see [`LICENSE`](LICENSE))
+- **Manuscript and documentation:** CC-BY-4.0
+
+```
+MIT License
+
+Copyright (c) 2026 Samir Baladi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+```
+
+---
+
+## 👤 Author
+
+**Samir Baladi**
+Interdisciplinary Researcher — Dynamic Software Systems, Program Transformation, and Runtime Verification
+Ronin Institute / Rite of Renaissance
+
+| Contact | Link |
+|---------|------|
+| Email | gitdeeper@gmail.com |
+| ORCID | [https://orcid.org/0009-0003-8903-0029](https://orcid.org/0009-0003-8903-0029) |
+| GitHub | [https://github.com/gitdeeper13](https://github.com/gitdeeper13) |
+| PyPI | [https://pypi.org/project/autopoietic-engine](https://pypi.org/project/autopoietic-engine) |
+| Zenodo | [https://doi.org/10.5281/zenodo.23475104](https://doi.org/10.5281/zenodo.23475104) |
+| Figshare | [https://doi.org/10.6084/m9.figshare.32525466](https://doi.org/10.6084/m9.figshare.32525466) |
 ---
 
 <div align="center">
 
-Autopoietic Code Rewriting · v0.1.0-research-draft · 2026
+**Autopoietic Code Rewriting · v0.2.0-implementation · October 2026**
 
-Function-Level Scope · Experimental Validation Pending
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23475104-1B4F72?logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.23475104)
+[![OSF](https://img.shields.io/badge/OSF-Preregistered-1B4F72?logo=osf&logoColor=white)](https://doi.org/10.17605/OSF.IO/PT2K6)
+[![License: MIT](https://img.shields.io/badge/license-MIT-27ae60)](LICENSE)
+
+*Function-Level Scope · Experimental Validation Pending*
 
 </div>
